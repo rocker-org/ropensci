@@ -15,13 +15,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 
 ## Install Omegahat dependencies 
-RUN install2.r -r http://www.omegahat.org/R \
+RUN install2.r --error --repos http://www.omegahat.org/R \
+    Rcompression \
     RHTMLForms \
+    ROOXML \
     RWordXML \
     SSOAP \
     Sxslt \
     XMLSchema \
-    Rcompression
+|| installGithub.r --deps TRUE \
+    omegahat/Rcompression \
+    omegahat/RHTMLForms \
+    duncantl/ROOXML \
+    duncantl/RWordXML \
+    omegahat/XMLSchema \
+    omegahat/SSOAP/Install \
+    omegahat/Sxslt \
+&& rm -rf /tmp/downloaded_packages/
+
 
 ## Install Github dependencies
 RUN Rscript -e 'devtools::install_github(c("DataONEorg/rdataone/dataonelibs", "ropensci/rdataone/dataone", "egonw/rrdf/rrdflibs","egonw/rrdf/rrdf"),  dependencies=NA, build_vignettes=FALSE)'
