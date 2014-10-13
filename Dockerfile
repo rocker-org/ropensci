@@ -35,7 +35,7 @@ RUN install2.r --error --repos http://www.omegahat.org/R \
 
 
 ## Install Github dependencies
-RUN installGuthub.r \
+RUN installGithub.r \
   DataONEorg/rdataone/dataonelibs \
   ropensci/rdataone/dataone \
   egonw/rrdf/rrdflibs \
