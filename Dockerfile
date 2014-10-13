@@ -35,7 +35,12 @@ RUN install2.r --error --repos http://www.omegahat.org/R \
 
 
 ## Install Github dependencies
-RUN Rscript -e 'devtools::install_github(c("DataONEorg/rdataone/dataonelibs", "ropensci/rdataone/dataone", "egonw/rrdf/rrdflibs","egonw/rrdf/rrdf"),  dependencies=NA, build_vignettes=FALSE)'
+RUN installGuthub.r \
+  DataONEorg/rdataone/dataonelibs \
+  ropensci/rdataone/dataone \
+  egonw/rrdf/rrdflibs \
+  egonw/rrdf/rrdf \
+&& rm -rf /tmp/downloaded_packages/
 
 
 ## Install build dependencies (not avaialble for Debian)
