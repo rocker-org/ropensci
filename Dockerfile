@@ -47,7 +47,7 @@ RUN installGithub.r \
 #RUN apt-get build-dep -y r-cran-rgeos r-cran-rgdal
 
 ## Install the rOpenSci R packages that are currently on CRAN
-RUN install2.r --error --deps TRUE \
+RUN install2.r --error \
   alm \
   AntWeb \
   aRxiv \
