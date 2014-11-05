@@ -13,8 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     netcdf-bin \
     libproj-dev
 
-
-## Install Omegahat dependencies 
+## Install additional Omegahat, CRAN & Github hosted dependencies 
 RUN install2.r --error --repos http://www.omegahat.org/R \
     Rcompression \
     RHTMLForms \
@@ -23,7 +22,7 @@ RUN install2.r --error --repos http://www.omegahat.org/R \
     SSOAP \
     Sxslt \
     XMLSchema \
-|| installGithub.r --deps TRUE \
+||  installGithub.r --deps TRUE \
     omegahat/Rcompression \
     omegahat/RHTMLForms \
     duncantl/ROOXML \
@@ -31,15 +30,16 @@ RUN install2.r --error --repos http://www.omegahat.org/R \
     omegahat/XMLSchema \
     omegahat/SSOAP/Install \
     omegahat/Sxslt \
-&& rm -rf /tmp/downloaded_packages/
-
-
-## Install Github dependencies
-RUN installGithub.r \
-  DataONEorg/rdataone/dataonelibs \
-  ropensci/rdataone/dataone \
-  egonw/rrdf/rrdflibs \
-  egonw/rrdf/rrdf \
+&&  installGithub.r \
+    DataONEorg/rdataone/dataonelibs \
+    ropensci/rdataone/dataone \
+    egonw/rrdf/rrdflibs \
+    egonw/rrdf/rrdf \
+&&  install2.r --error \
+    gegier \ 
+    phylobase \
+    phytools \
+    knitcitations \
 && rm -rf /tmp/downloaded_packages/
 
 
