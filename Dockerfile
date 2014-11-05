@@ -36,7 +36,7 @@ RUN install2.r --error --repos http://www.omegahat.org/R \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
 &&  install2.r --error \
-    gegier \ 
+    geiger \ 
     phylobase \
     phytools \
     knitcitations \
