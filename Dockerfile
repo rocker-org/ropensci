@@ -41,7 +41,7 @@ RUN rm /tmp/*.rds \
     ropensci/rdataone/dataone \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
-    rmanathv/rcharts \
+    ramnathv/rcharts \
 &&  install2.r --error \
     geiger \ 
     phylobase \
