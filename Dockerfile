@@ -12,11 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgdal1-dev \
     libproj-dev \
     netcdf-bin \
-    python-mysqldb \
-    python-psycopg2 \
-    python-setuptools \
-    python-wxgtk3.0 \
-    python-xlrd 
+    python-pip 
 
 ## Install additional Omegahat, CRAN & Github hosted dependencies 
 RUN rm /tmp/*.rds \
@@ -49,10 +45,7 @@ RUN rm /tmp/*.rds \
     knitcitations \
 && install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
-&& wget https://github.com/weecology/retriever/archive/v1.7.0.tar.gz \ 
-&& tar -xvf v1.7.0.tar.gz \
-&& cd v1.7.0 && python setup.py install && cd .. \
-&& rm v1.7.0.tar.gz \
+&& pip install retriever \
 && rm -rf /tmp/downloaded_packages/
 
 
