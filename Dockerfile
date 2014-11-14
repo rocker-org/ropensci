@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     netcdf-bin \
     python-pip 
 
-## Install additional Omegahat, CRAN & Github hosted dependencies 
-RUN rm /tmp/*.rds \
+## Install additional Omegahat dependencies 
+RUN rm -rf /tmp/*.rds \
 && install2.r --error --repos http://www.omegahat.org/R \
     Rcompression \
     RHTMLForms \
@@ -31,13 +31,16 @@ RUN rm /tmp/*.rds \
     duncantl/RWordXML \
     omegahat/XMLSchema \
     omegahat/SSOAP/Install \
-    omegahat/Sxslt \
-&&  installGithub.r \
+    omegahat/Sxslt
+
+## Install additional CRAN & Github dependencies
+RUN installGithub.r \
     DataONEorg/rdataone/dataonelibs \
     ropensci/rdataone/dataone \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
     ramnathv/rcharts \
+&& rm -rf /tmp/*.rds \
 &&  install2.r --error \
     geiger \ 
     phylobase \
@@ -46,7 +49,7 @@ RUN rm /tmp/*.rds \
 && install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
 && pip install retriever \
-&& rm -rf /tmp/downloaded_packages/
+&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
 
 ## Install build dependencies (not avaialble for Debian)
