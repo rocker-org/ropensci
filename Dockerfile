@@ -34,19 +34,20 @@ RUN rm -rf /tmp/*.rds \
     omegahat/Sxslt
 
 ## Install additional CRAN & Github dependencies
-RUN installGithub.r \
+RUN rm -rf /tmp/*.rds \
+    installGithub.r \
     DataONEorg/rdataone/dataonelibs \
     ropensci/rdataone/dataone \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
     ramnathv/rcharts \
-&& rm -rf /tmp/*.rds \
 &&  install2.r --error \
     geiger \ 
     phylobase \
     phytools \
-    knitcitations \
-&& install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
+    knitcitations 
+
+RUN install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
