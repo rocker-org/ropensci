@@ -35,7 +35,7 @@ RUN rm -rf /tmp/*.rds \
 
 ## Install additional CRAN & Github dependencies
 RUN rm -rf /tmp/*.rds \
-    installGithub.r \
+&&  installGithub.r \
     DataONEorg/rdataone/dataonelibs \
     ropensci/rdataone/dataone \
     egonw/rrdf/rrdflibs \
