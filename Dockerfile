@@ -48,7 +48,7 @@ RUN rm -rf /tmp/*.rds \
     knitcitations 
 
 RUN install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
-&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
+&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite(); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 

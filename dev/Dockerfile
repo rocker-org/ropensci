@@ -6,7 +6,7 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 
 ## Additional dependencies
-RUN r -e 'source("http://bioconductor.org/biocLite.R"); biocLite("sangerseqR")'
+RUN r -e 'source("http://bioconductor.org/biocLite.R"); biocLite(); biocLite("sangerseqR")'
 
 ## Github-dev versions of the R packages already on CRAN
 ## Non-alphabetized since order reflects package dependencies
