@@ -48,13 +48,10 @@ RUN rm -rf /tmp/*.rds \
     knitcitations 
 
 RUN install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
-&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite(); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
+&& apt-get update && apt-get build-dep -y r-cran-rgl \
+&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite(ask=FALSE); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
-
-
-## Install build dependencies (not avaialble for Debian)
-#RUN apt-get build-dep -y r-cran-rgeos r-cran-rgdal
 
 
 ## Install the rOpenSci R packages that are currently on CRAN
