@@ -49,7 +49,7 @@ RUN rm -rf /tmp/*.rds \
 
 RUN install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
 && apt-get update && apt-get build-dep -y r-cran-rgl \
-&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite(ask=FALSE); biocLite("rhdf5", ask=FALSE); biocLite("BiocInstaller")' \
+&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE)' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
