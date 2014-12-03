@@ -22,10 +22,12 @@ install:
 before_script:
   - "sekexe/run 'mount -t tmpfs -o size=8g tmpfs /var/lib/docker && docker -d -H tcp://0.0.0.0:2375' &"
   - "while ! docker info &> /dev/null ; do sleep 1; done"
-    #  - docker pull rocker/ropensci
+  - docker pull rocker/ropensci
 
+
+## building ropensci locally times out, so we just pull and test
 script:
   - docker version
-  - docker build -t local/ropensci . 
-  - docker build -t local/ropensci:dev dev/ 
-  - docker run local/ropensci R --version 
+    #  - docker build -t local/ropensci . 
+    #  - docker build -t local/ropensci:dev dev/ 
+  - docker run rocker/ropensci R --version 
