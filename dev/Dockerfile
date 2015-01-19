@@ -64,7 +64,7 @@ RUN installGithub.r \
 		ropensci/gistr \
 		ropensci/elastic \
 		ropensci/plotly \
-		ropensci/togeojson \ 
+    ropensci/geojsonio \
     ropensci/fulltext \ 
     ropensci/rMaps \
     ropensci/rfishbase \
