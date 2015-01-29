@@ -42,10 +42,12 @@ RUN rm -rf /tmp/*.rds \
     egonw/rrdf/rrdf \
     ramnathv/rcharts \
 &&  install2.r --error \
+    dismo \
     geiger \ 
+    knitcitations \
+    pander \
     phylobase \
-    phytools \
-    knitcitations 
+    phytools 
 
 RUN install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
 && apt-get update && apt-get build-dep -y r-cran-rgl \
