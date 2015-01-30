@@ -5,6 +5,7 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 ## Refresh package list and upgrade
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gdal-bin \
+    icedtea-netx \
     libxslt1-dev \
     libgeos-dev \
     libgeos-c1 \
@@ -90,4 +91,6 @@ RUN install2.r --error \
   taxize \
   treebase \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+RUN installGithub.r ropensci/EML
 
