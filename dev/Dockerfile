@@ -67,7 +67,7 @@ RUN installGithub.r \
     ropensci/geojsonio \
     ropensci/fulltext \ 
     ropensci/rMaps \
-    ropensci/rfishbase \
+    ropensci/rfishbase@rfishbase2.0 \
 && rm -rf /tmp/downloaded_packages/
 
 
