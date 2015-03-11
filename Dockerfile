@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgdal1h \
     libgdal1-dev \
     libproj-dev \
+    libv8-dev \
     netcdf-bin \
     python-pip 
 
