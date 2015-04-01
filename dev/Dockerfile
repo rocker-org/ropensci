@@ -44,6 +44,7 @@ RUN installGithub.r \
 ## Packages not yet on CRAN
 ## Non-alphabetized since order reflects package dependencies
 RUN installGithub.r \
+    emhart/biorxiv \
     ropensci/rnpn \
 		ropensci/rvertnet \
 		ropensci/gender \
@@ -67,7 +68,7 @@ RUN installGithub.r \
     ropensci/geojsonio \
     ropensci/fulltext \ 
     ropensci/rMaps \
-    ropensci/rfishbase@rfishbase2.0 \
+    ropensci/rfishbase \
 && rm -rf /tmp/downloaded_packages/
 
 
