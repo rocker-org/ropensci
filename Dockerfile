@@ -3,7 +3,8 @@ FROM rocker/hadleyverse
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Refresh package list and upgrade
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update \
+&& apt-get install -y --no-install-recommends \
     gdal-bin \
     icedtea-netx \
     libxslt1-dev \
@@ -14,11 +15,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libproj-dev \
     libv8-dev \
     netcdf-bin \
-    python-pip 
+    python-pip \ 
+&& apt-get build-dep -y r-cran-rgl 
 
-## Install additional Omegahat dependencies 
+## Install additional Omegahat dependencies, with fallback to Github-based install 
 RUN rm -rf /tmp/*.rds \
-&& install2.r --error --repos http://www.omegahat.org/R \
+&& install2.r --error \
+    -r http://cran.rstudio.com \
+    -r http://www.omegahat.org/R \
+    -r http://datacube.wu.ac.at \
+    drat \
+    dismo \
+    geiger \
+    git2r \
+    knitcitations \
+    pander \
+    phylobase \
+    phytools \
+    Rcampdf \
     Rcompression \
     RHTMLForms \
     ROOXML \
@@ -33,30 +47,17 @@ RUN rm -rf /tmp/*.rds \
     duncantl/RWordXML \
     omegahat/XMLSchema \
     omegahat/SSOAP/Install \
-    omegahat/Sxslt
-
-## Install additional CRAN & Github dependencies
-RUN rm -rf /tmp/*.rds \
+    omegahat/Sxslt \
 &&  installGithub.r \
     DataONEorg/rdataone/dataonelibs \
     ropensci/rdataone/dataone \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
     ramnathv/rcharts \
-&&  install2.r --error \
-    dismo \
-    geiger \ 
-    knitcitations \
-    pander \
-    phylobase \
-    phytools 
-
-RUN install2.r --error --repos http://datacube.wu.ac.at Rcampdf \
-&& apt-get update && apt-get build-dep -y r-cran-rgl \
+    ropensci/EML \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE)' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
-
 
 ## Install the rOpenSci R packages that are currently on CRAN
 RUN install2.r --error \
@@ -92,6 +93,3 @@ RUN install2.r --error \
   taxize \
   treebase \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-RUN installGithub.r ropensci/EML
-
