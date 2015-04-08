@@ -24,7 +24,6 @@ RUN rm -rf /tmp/*.rds \
     -r http://cran.rstudio.com \
     -r http://www.omegahat.org/R \
     -r http://datacube.wu.ac.at \
-    drat \
     dismo \
     geiger \
     git2r \
@@ -51,6 +50,7 @@ RUN rm -rf /tmp/*.rds \
 &&  installGithub.r \
     DataONEorg/rdataone/dataonelibs \
     ropensci/rdataone/dataone \
+    eddelbuettel/drat \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
     ramnathv/rcharts \
