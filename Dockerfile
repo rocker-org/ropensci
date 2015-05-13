@@ -5,6 +5,7 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 ## Refresh package list and upgrade
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
+    cdbs \
     gdal-bin \
     icedtea-netx \
     libxslt1-dev \
@@ -12,11 +13,11 @@ RUN apt-get update \
     libgeos-c1 \
     libgdal1h \
     libgdal1-dev \
+    libgl1-mesa-dev \ 
     libproj-dev \
     libv8-dev \
     netcdf-bin \
-    python-pip \ 
-&& apt-get build-dep -y r-cran-rgl 
+    python-pip  
 
 ## Install additional Omegahat dependencies, with fallback to Github-based install 
 RUN rm -rf /tmp/*.rds \
