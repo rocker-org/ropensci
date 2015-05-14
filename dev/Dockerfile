@@ -10,67 +10,62 @@ RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("sangerse
 
 ## Github-dev versions of the R packages already on CRAN
 ## Non-alphabetized since order reflects package dependencies
-RUN installGithub.r \ 
-    ropensci/rinat \
-		ropensci/spocc \
-		ropensci/AntWeb \
-		ropensci/ecoengine \
-		ropensci/rebird \
-		ropensci/rfishbase \
-		ropensci/rfisheries \
-		ropensci/treebase \
-		ropensci/rbhl \
-		ropensci/rgbif \
-		ropensci/taxize \
-		ropensci/rsnps \
-		ropensci/rentrez \
-		ropensci/rnoaa \
-		ropensci/rdryad \
-		ropensci/RSelenium \
-		ropensci/rbison \
-		ropensci/bold \
-		ropensci/rplos \
-		ropensci/aRxiv \
-		ropensci/rAltmetric \
-		ropensci/alm \
-		ropensci/rfigshare \
-		ropensci/dvn \
-		ropensci/RNeXML \
-		ropensci/solr \
-		ropensci/Reol \
-		ropensci/rWBclimate \
+RUN install2.r -r http://cran.rstudio.com -r http://carlboettiger.info/drat \ 
+    grinat \
+		gspocc \
+		gAntWeb \
+		gecoengine \
+		grebird \
+		grfishbase \
+		grfisheries \
+		gtreebase \
+		grbhl \
+		grgbif \
+		gtaxize \
+		grsnps \
+		grentrez \
+		grnoaa \
+		grdryad \
+		gRSelenium \
+		grbison \
+		gbold \
+		grplos \
+		gaRxiv \
+		grAltmetric \
+		galm \
+		grfigshare \
+		gdvn \
+		gRNeXML \
+		gsolr \
+		gReol \
+		grWBclimate \
+    grnpn \
+		grvertnet \
+		ggender \
+		ggeonames \
+		gclifro \
+		gecoretriever \
+		gtraits \
+		grebi \
+		grorcid \
+		gelife \
+		grdatacite \
+		gbmc \
+		grcrossref \
+		grmetadata \
+		gEML \
+		ggit2r \
+		gtestdat \
+		ggistr \
+		gelastic \
+		gplotly \
+    ggeojsonio \
+    gfulltext \ 
+    grMaps \
+    grfishbase \
 && rm -rf /tmp/downloaded_packages/
 
-## Packages not yet on CRAN
-## Non-alphabetized since order reflects package dependencies
-RUN installGithub.r \
-    emhart/biorxiv \
-    ropensci/rnpn \
-		ropensci/rvertnet \
-		ropensci/gender \
-		ropensci/geonames \
-		ropensci/clifro \
-		ropensci/ecoretriever \
-		ropensci/traits \
-		ropensci/rebi \
-		ropensci/rorcid \
-		ropensci/elife \
-		ropensci/rdatacite \
-		ropensci/bmc \
-		ropensci/rcrossref \
-		ropensci/rmetadata \
-		ropensci/EML \
-		ropensci/git2r \
-		ropensci/testdat \
-		ropensci/gistr \
-		ropensci/elastic \
-		ropensci/plotly \
-    ropensci/geojsonio \
-    ropensci/fulltext \ 
-    ropensci/rMaps \
-    ropensci/rfishbase \
-&& rm -rf /tmp/downloaded_packages/
-
+RUN R -e "update.packages(repos=c('http://cran.rstudio.com', 'http://carlboettiger.info/drat'))"
 
 ## Packages needing further configuration before install will work: 
 
