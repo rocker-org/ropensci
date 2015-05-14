@@ -4,10 +4,6 @@
 FROM rocker/ropensci:latest 
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
-
-## Additional dependencies
-RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("sangerseqR")'
-
 ## Github-dev versions of the R packages already on CRAN
 ## Non-alphabetized since order reflects package dependencies
 RUN install2.r -r http://cran.rstudio.com -r http://carlboettiger.info/drat \ 
