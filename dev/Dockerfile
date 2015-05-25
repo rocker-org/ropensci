@@ -4,9 +4,6 @@
 FROM rocker/ropensci:latest 
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
-## Install some dependencies explicitly for faster drat builds
-RUN install2.r -r http://cran.rstudio.com xts pkgKitten gam glmnet lfe lme4 lmtest plm biglm minqa nloptr RcppEigen bdsmatrix
-
 ## Github-dev versions of the R packages already on CRAN
 ## Non-alphabetized since order reflects package dependencies
 RUN install2.r -r http://cran.rstudio.com -r http://carlboettiger.info/drat \ 

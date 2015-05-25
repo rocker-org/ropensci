@@ -57,6 +57,7 @@ RUN rm -rf /tmp/*.rds \
     ramnathv/rcharts \
     ropensci/EML \
     ropensci/ropkgs \
+    richfitz/drat.builder \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
