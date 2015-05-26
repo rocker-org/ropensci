@@ -14,6 +14,7 @@ RUN apt-get update \
     libgdal1h \
     libgdal1-dev \
     libgl1-mesa-dev \ 
+    libhiredis-dev \
     libproj-dev \
     libv8-dev \
     netcdf-bin \
