@@ -123,6 +123,7 @@ RUN install2.r -r http://cran.rstudio.com -r http://carlboettiger.info/drat \
     webchem \
     webmockr \
     wellknown \
-    zenodo \ 
-&& rm -rf /tmp/downloaded_packages/
+    zenodo \
+  && R -e "update.packages(ask=FALSE, repo=c('http://carlboettiger.info/drat', 'http://cran.rstudio.com'))" \
+  && rm -rf /tmp/downloaded_packages/
 
