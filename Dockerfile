@@ -16,7 +16,8 @@ RUN apt-get update \
     libgl1-mesa-dev \ 
     libhiredis-dev \
     libproj-dev \
-		libsasl2-dev \
+    librdf0-dev \
+    libsasl2-dev \
 		libv8-dev \
     netcdf-bin \
     python-pip
