@@ -60,7 +60,7 @@ RUN rm -rf /tmp/*.rds \
     ramnathv/rcharts \
     ropensci/EML \
     ropensci/ropkgs \
-    richfitz/drat.builder \
+    cboettig/drat.builder \
     eddelbuettel/rcppredis \
     iDigBio/ridigbio \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
