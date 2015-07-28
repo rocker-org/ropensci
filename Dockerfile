@@ -69,6 +69,6 @@ RUN rm -rf /tmp/*.rds \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
-## Install the rOpenSci R packages that are currently on CRAN
-RUN R -e "out <- ropkgs::ro_pkgs(); install.packages(out$packages$name[out$packages$on_cran])" \
+## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
+RUN R -e 'out <- ropkgs::ro_pkgs(); install.packages(out$packages$name[out$packages$on_cran])' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
