@@ -70,36 +70,5 @@ RUN rm -rf /tmp/*.rds \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
 ## Install the rOpenSci R packages that are currently on CRAN
-RUN install2.r --error \
-  alm \
-  AntWeb \
-  aRxiv \
-  bold \
-  dvn \
-  ecoengine \
-  ecoretriever \
-  paleobioDB \
-  rAltmetric \
-  rAvis \
-  rbhl \
-  rbison \
-  rdryad \
-  rebird \
-  rentrez \
-  Reol \
-  rfigshare \
-  rfishbase \
-  rfisheries \
-  rgbif \
-  rinat \
-  RNeXML \
-  rnoaa \
-  rplos \
-  RSelenium \
-  rsnps \
-  rWBclimate \
-  solr \
-  spocc \
-  taxize \
-  treebase \
-&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+RUN R -e "out <- ropkgs::ro_pkgs(); install.packages(out$packages$name[out$packages$on_cran])" \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
