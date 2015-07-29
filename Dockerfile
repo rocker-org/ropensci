@@ -62,7 +62,7 @@ RUN rm -rf /tmp/*.rds \
     ropensci/ropkgs \
     cboettig/drat.builder \
     cloudyr/aws.signature \
-    cloudyr/aws.s3 \
+    cloudyr/aws.s3@cboettig \
     eddelbuettel/rcppredis \
     iDigBio/ridigbio \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
