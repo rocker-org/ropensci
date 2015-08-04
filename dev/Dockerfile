@@ -6,7 +6,7 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Github-dev versions of the R packages already on CRAN
 ## Non-alphabetized since order reflects package dependencies
-RUN install2.r -r http://cran.rstudio.com -r http://carlboettiger.info/drat \ 
+RUN install2.r -r http://cran.rstudio.com -r http://packages.ropensci.org \ 
     AntWeb \
     aRxiv \
     binomen \
@@ -124,6 +124,6 @@ RUN install2.r -r http://cran.rstudio.com -r http://carlboettiger.info/drat \
     webmockr \
     wellknown \
     zenodo \
-  && R -e "update.packages(ask=FALSE, repo=c('http://carlboettiger.info/drat', 'http://cran.rstudio.com'))" \
+  && R -e "update.packages(ask=FALSE, repo=c('http://packages.ropensci.org', 'http://cran.rstudio.com'))" \
   && rm -rf /tmp/downloaded_packages/
 
