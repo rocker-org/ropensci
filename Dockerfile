@@ -20,7 +20,25 @@ RUN apt-get update \
     libsasl2-dev \
 		libv8-dev \
     netcdf-bin \
-    python-pip
+    python-pip \
+||  apt-get install -y --no-install-recommends \
+    cdbs \
+    gdal-bin \
+    icedtea-netx \
+    libxslt1-dev \
+    libgeos-dev \
+    libgeos-c1 \
+    libgdal1h \
+    libgdal1-dev \
+    libgl1-mesa-dev \ 
+    libhiredis-dev \
+    libproj-dev \
+    librdf0-dev \
+    libsasl2-dev \
+		libv8-dev \
+    netcdf-bin \
+    python-pip \
+
 
 ## Install additional Omegahat dependencies, with fallback to Github-based install 
 RUN rm -rf /tmp/*.rds \
