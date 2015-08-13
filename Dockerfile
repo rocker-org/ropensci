@@ -66,7 +66,7 @@ RUN rm -rf /tmp/*.rds \
     omegahat/RHTMLForms \
     duncantl/ROOXML \
     duncantl/RWordXML \
-    omegahat/XMLSchema \
+    cboettig/XMLSchema \
     omegahat/SSOAP/Install \
     omegahat/Sxslt \
 &&  installGithub.r \
