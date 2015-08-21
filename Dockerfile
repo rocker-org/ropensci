@@ -40,12 +40,13 @@ RUN apt-get update \
     python-pip \
 
 
-## Install additional Omegahat dependencies, with fallback to Github-based install 
+## Install additional dependencies
 RUN rm -rf /tmp/*.rds \
 && install2.r --error \
     -r http://cran.rstudio.com \
     -r http://www.omegahat.org/R \
     -r http://datacube.wu.ac.at \
+    -r http://packages.ropensci.org \
     dismo \
     geiger \
     git2r \
@@ -61,28 +62,19 @@ RUN rm -rf /tmp/*.rds \
     SSOAP \
     Sxslt \
     XMLSchema \
-||  installGithub.r \
-    omegahat/Rcompression \
-    omegahat/RHTMLForms \
-    duncantl/ROOXML \
-    duncantl/RWordXML \
-    cboettig/XMLSchema \
-    omegahat/SSOAP/Install \
-    omegahat/Sxslt \
-&&  installGithub.r \
-    DataONEorg/rdataone/dataonelibs \
-    ropensci/rdataone/dataone \
-    eddelbuettel/drat \
-    egonw/rrdf/rrdflibs \
-    egonw/rrdf/rrdf \
-    ramnathv/rcharts \
-    ropensci/EML \
-    ropensci/ropkgs \
+    dataonelibs \
+    dataone \
+    drat \
+    rrdflibs \
+    rrdf \
+    rcharts \
+    ropkgs \
+    rcppredis \
+    ridigbio \
+&& installGithub.r \
     cboettig/drat.builder \
     cloudyr/aws.signature \
-    cloudyr/aws.s3@cboettig \
-    eddelbuettel/rcppredis \
-    iDigBio/ridigbio \
+    cloudyr/aws.s3 \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
 && pip install retriever \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
