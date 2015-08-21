@@ -62,8 +62,6 @@ RUN rm -rf /tmp/*.rds \
     SSOAP \
     Sxslt \
     XMLSchema \
-    dataonelibs \
-    dataone \
     drat \
     rrdflibs \
     rrdf \
