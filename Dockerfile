@@ -7,37 +7,19 @@ RUN apt-get update \
 && apt-get install -y --no-install-recommends -t unstable \
     cdbs \
     gdal-bin \
+    libgdal1-dev \
     icedtea-netx \
     libxslt1-dev \
     libgeos-dev \
     libgeos-c1 \
-    libgdal1h \
-    libgdal1-dev \
-    libgl1-mesa-dev \ 
+    libgl1-mesa-dev \
     libhiredis-dev \
     libproj-dev \
     librdf0-dev \
     libsasl2-dev \
-		libv8-dev \
+    libv8-dev \
     netcdf-bin \
-    python-pip \
-||  apt-get install -y --no-install-recommends \
-    cdbs \
-    gdal-bin \
-    icedtea-netx \
-    libxslt1-dev \
-    libgeos-dev \
-    libgeos-c1 \
-    libgdal1h \
-    libgdal1-dev \
-    libgl1-mesa-dev \ 
-    libhiredis-dev \
-    libproj-dev \
-    librdf0-dev \
-    libsasl2-dev \
-		libv8-dev \
-    netcdf-bin \
-    python-pip \
+    python-pip 
 
 
 ## Install additional dependencies
@@ -69,6 +51,7 @@ RUN rm -rf /tmp/*.rds \
     ropkgs \
     rcppredis \
     ridigbio \
+    rgeolocate \
 && installGithub.r \
     cboettig/drat.builder \
     cloudyr/aws.signature \
