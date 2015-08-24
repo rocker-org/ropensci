@@ -47,7 +47,6 @@ RUN rm -rf /tmp/*.rds \
     drat \
     rrdflibs \
     rrdf \
-    rcharts \
     ropkgs \
     rcppredis \
     ridigbio \
