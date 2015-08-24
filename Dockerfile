@@ -48,7 +48,6 @@ RUN rm -rf /tmp/*.rds \
     rrdflibs \
     rrdf \
     ropkgs \
-    rcppredis \
     ridigbio \
     rgeolocate \
 && installGithub.r \
