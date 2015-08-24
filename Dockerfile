@@ -51,7 +51,7 @@ RUN rm -rf /tmp/*.rds \
     ridigbio \
     rgeolocate \
 && installGithub.r \
-    cboettig/drat.builder \
+    richfitz/drat.builder \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
 && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
