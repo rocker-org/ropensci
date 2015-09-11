@@ -11,7 +11,7 @@ RUN apt-get update \
     icedtea-netx \
     libxslt1-dev \
     libgeos-dev \
-    libgeos-c1 \
+    libgeos-c1v5 \
     libgl1-mesa-dev \
     libhiredis-dev \
     libproj-dev \
