@@ -4,7 +4,7 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Refresh package list and upgrade
 RUN apt-get update \
-&& apt-get install -y --no-install-recommends -t unstable \
+  && apt-get install -y --no-install-recommends -t unstable \
     cdbs \
     gdal-bin \
     libgdal1-dev \
@@ -24,7 +24,7 @@ RUN apt-get update \
 
 ## Install additional dependencies
 RUN rm -rf /tmp/*.rds \
-&& install2.r --error \
+  && install2.r --error \
     -r http://cran.rstudio.com \
     -r http://www.omegahat.org/R \
     -r http://datacube.wu.ac.at \
@@ -45,18 +45,18 @@ RUN rm -rf /tmp/*.rds \
     Sxslt \
     XMLSchema \
     drat \
-    rrdflibs \
-    rrdf \
     ropkgs \
     ridigbio \
     rgeolocate \
-&& installGithub.r \
+  && installGithub.r \
     richfitz/drat.builder \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
-&& Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
-&& pip install retriever \
-&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
+    egonw/rrdf/rrdflibs \
+    egonw/rrdf/rrdf \
+  && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
+  && pip install retriever \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
 ## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
 RUN R -e 'out <- ropkgs::ro_pkgs(); install.packages(out$packages$name[out$packages$on_cran])' \
