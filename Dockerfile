@@ -26,7 +26,6 @@ RUN apt-get update \
 RUN rm -rf /tmp/*.rds \
   && install2.r --error \
     -r http://cran.rstudio.com \
-    -r http://www.omegahat.org/R \
     -r http://datacube.wu.ac.at \
     -r http://packages.ropensci.org \
     dismo \
