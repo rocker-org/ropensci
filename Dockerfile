@@ -36,17 +36,11 @@ RUN rm -rf /tmp/*.rds \
     phylobase \
     phytools \
     Rcampdf \
-    Rcompression \
-    RHTMLForms \
-    ROOXML \
-    RWordXML \
-    SSOAP \
-    Sxslt \
-    XMLSchema \
     drat \
     ropkgs \
     ridigbio \
     rgeolocate \
+    RJSONIO \
   && installGithub.r \
     richfitz/drat.builder \
     cloudyr/aws.signature \
@@ -56,6 +50,18 @@ RUN rm -rf /tmp/*.rds \
   && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
+
+RUN install2.r --error \
+    -r http://cran.rstudio.com \
+    -r http://www.omegahat.org/R \
+    -r http://packages.ropensci.org \
+    Rcompression \
+    RHTMLForms \
+    ROOXML \
+    RWordXML \
+    SSOAP \
+    Sxslt \
+    XMLSchema 
 
 ## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
 RUN R -e 'out <- ropkgs::ro_pkgs(); install.packages(out$packages$name[out$packages$on_cran])' \
