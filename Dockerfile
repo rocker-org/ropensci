@@ -24,6 +24,7 @@ RUN apt-get update \
 
 ## Install additional dependencies
 RUN rm -rf /tmp/*.rds \
+  && r -e 'source("https://bioconductor.org/biocLite.R"); biocLite("Biostrings", ask = FALSE)' \
   && install2.r --error \
     -r http://cran.rstudio.com \
     -r http://datacube.wu.ac.at \
@@ -47,7 +48,7 @@ RUN rm -rf /tmp/*.rds \
     cloudyr/aws.s3 \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
-  && Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
+  && r -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
