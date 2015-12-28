@@ -29,7 +29,7 @@ RUN rm -rf /tmp/*.rds \
     -r "http://datacube.wu.ac.at" \
     -r "http://packages.ropensci.org" \
     -r "http://www.bioconductor.org/packages/release/bioc" \
-    - r "http://nceas.github.io/drat" \
+    -r "http://nceas.github.io/drat" \
     datapackage \
     dismo \
     drat \
