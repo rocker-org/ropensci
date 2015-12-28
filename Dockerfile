@@ -56,6 +56,7 @@ RUN install2.r --error \
     -r http://cran.rstudio.com \
     -r http://www.omegahat.org/R \
     -r http://packages.ropensci.org \
+    pander \
     Rcompression \
     RHTMLForms \
     ROOXML \
