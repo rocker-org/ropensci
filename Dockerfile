@@ -29,7 +29,10 @@ RUN rm -rf /tmp/*.rds \
     -r "http://datacube.wu.ac.at" \
     -r "http://packages.ropensci.org" \
     -r "http://www.bioconductor.org/packages/release/bioc" \
+    - r "http://nceas.github.io/drat" \
+    datapackage \
     dismo \
+    drat \
     geiger \
     git2r \
     knitcitations \
@@ -37,7 +40,7 @@ RUN rm -rf /tmp/*.rds \
     phylobase \
     phytools \
     Rcampdf \
-    drat \
+    redland \
     ropkgs \
     ridigbio \
     rgeolocate \
@@ -48,6 +51,7 @@ RUN rm -rf /tmp/*.rds \
     cloudyr/aws.s3 \
     egonw/rrdf/rrdflibs \
     egonw/rrdf/rrdf \
+    DataONEorg/rdataone/dataone \
   && r -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
@@ -56,7 +60,6 @@ RUN install2.r \
     -r "http://cran.rstudio.com" \
     -r "http://www.omegahat.org/R" \
     -r "http://packages.ropensci.org" \
-    pander \
     Rcompression \
     RHTMLForms \
     ROOXML \
