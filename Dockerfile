@@ -52,10 +52,10 @@ RUN rm -rf /tmp/*.rds \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
-RUN install2.r --error \
-    -r http://cran.rstudio.com \
-    -r http://www.omegahat.org/R \
-    -r http://packages.ropensci.org \
+RUN install2.r \
+    -r "http://cran.rstudio.com" \
+    -r "http://www.omegahat.org/R" \
+    -r "http://packages.ropensci.org" \
     pander \
     Rcompression \
     RHTMLForms \
