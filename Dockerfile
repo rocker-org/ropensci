@@ -6,19 +6,10 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 RUN apt-get update \
   && apt-get install -y --no-install-recommends -t unstable \
     cdbs \
-    gdal-bin \
-    libgdal1-dev \
-    icedtea-netx \
-    libxslt1-dev \
-    libgeos-dev \
-    libgeos-c1v5 \
     libgl1-mesa-dev \
     libhiredis-dev \
     libproj-dev \
-    librdf0-dev \
     libsasl2-dev \
-    libv8-dev \
-    netcdf-bin \
     python-pip 
 
 
@@ -40,22 +31,23 @@ RUN rm -rf /tmp/*.rds \
     phylobase \
     phytools \
     Rcampdf \
+    rrdf \
     redland \
+    rhdf5 \
     ropkgs \
     ridigbio \
     rgeolocate \
     RJSONIO \
+    sangerseqR \
   && installGithub.r \
     richfitz/drat.builder \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
-    egonw/rrdf/rrdflibs \
-    egonw/rrdf/rrdf \
     DataONEorg/rdataone/dataone \
-  && r -e 'source("http://bioconductor.org/biocLite.R"); biocLite("rhdf5", ask=FALSE); biocLite("sangerseqR", ask=FALSE)' \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
+## Do the Omegahat installs seperately...
 RUN install2.r \
     -r "http://cran.rstudio.com" \
     -r "http://www.omegahat.org/R" \
