@@ -1,6 +1,8 @@
 rocker/ropensci
 ==================
 
+[![Build Status](https://travis-ci.org/rocker-org/ropensci.svg)](https://travis-ci.org/rocker-org/ropensci)
+
 See the [rocker-org Wiki](https://github.com/rocker-org/rocker/wiki/) for details on use and development of this Docker image.
 
 - `rocker/ropensci` image provides all rOpenSci packages currently on CRAN
