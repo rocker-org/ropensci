@@ -39,11 +39,12 @@ RUN rm -rf /tmp/*.rds \
     rgeolocate \
     RJSONIO \
     sangerseqR \
+    dataone \
+    datapackage \
   && installGithub.r \
     richfitz/drat.builder \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
-    DataONEorg/rdataone/dataone \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
