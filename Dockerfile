@@ -21,7 +21,7 @@ RUN rm -rf /tmp/*.rds \
     -r "http://packages.ropensci.org" \
     -r "http://www.bioconductor.org/packages/release/bioc" \
     -r "http://nceas.github.io/drat" \
-    datapackage \
+    datapack \
     dismo \
     drat \
     geiger \
@@ -40,7 +40,6 @@ RUN rm -rf /tmp/*.rds \
     RJSONIO \
     sangerseqR \
     dataone \
-    datapackage \
   && installGithub.r \
     richfitz/drat.builder \
     cloudyr/aws.signature \
