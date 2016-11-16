@@ -34,7 +34,6 @@ RUN apt-get update \
     mdbtools \
     netcdf-bin \
     qpdf \
-    r-cran-rgl \
     ssh \
     vim \
   && R CMD javareconf \
@@ -66,7 +65,7 @@ RUN install2.r --error \
     rgeolocate \
     RJSONIO \
     sangerseqR \
-    Rscript -e "devtools::install_github(c('richfitz/drat.builder', 'cloudyr/aws.signature', 'cloudyr/aws.s3', 'DataONEorg/rdataone'))" \
+  && Rscript -e "devtools::install_github(c('richfitz/drat.builder', 'cloudyr/aws.signature', 'cloudyr/aws.s3', 'DataONEorg/rdataone'))" \
   && pip install retriever \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
   && install2.r --error \
