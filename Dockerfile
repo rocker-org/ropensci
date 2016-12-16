@@ -8,6 +8,7 @@ RUN apt-get update \
     cdbs \
     libgl1-mesa-dev \
     libhiredis-dev \
+    libicu-dev \
     libproj-dev \
     libsasl2-dev \
     python-pip 
@@ -40,7 +41,7 @@ RUN rm -rf /tmp/*.rds \
     RJSONIO \
     sangerseqR \
     dataone \
-    datapackage \
+    datapack \
   && installGithub.r \
     richfitz/drat.builder \
     cloudyr/aws.signature \

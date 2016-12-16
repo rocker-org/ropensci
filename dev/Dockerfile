@@ -18,7 +18,7 @@ RUN install2.r -r http://cran.rstudio.com -r http://packages.ropensci.org \
     clifro \
     csl \
     dashboard \
-    datapackage \
+    datapack \
     dependencies \
     dvn \
     ecoengine \
