@@ -1,28 +1,54 @@
 ## Start with the rstudio image providing 'base R' as well as RStudio based on Debian testing
-FROM rocker/hadleyverse
+FROM rocker/verse
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Refresh package list and upgrade
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends -t unstable \
+  && apt-get install -y --no-install-recommends \
     cdbs \
     libgl1-mesa-dev \
     libhiredis-dev \
     libicu-dev \
     libproj-dev \
     libsasl2-dev \
-    python-pip 
-
+    python-pip \
+    default-jdk \
+    default-jre \
+    gdal-bin \
+    icedtea-netx \
+    libatlas-base-dev \
+    libcairo2-dev \
+    libhunspell-dev \
+    libgeos-dev \
+    libgsl0-dev \
+    librdf0-dev \
+    libmysqlclient-dev \
+    libpq-dev \
+    libsqlite3-dev \
+    librsvg2-dev \
+    libv8-dev \
+    libxcb1-dev \
+    libxdmcp-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    libxt-dev \
+    mdbtools \
+    netcdf-bin \
+    qpdf \
+    ssh \
+    vim \
+  && R CMD javareconf \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/ \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Install additional dependencies
-RUN rm -rf /tmp/*.rds \
-  && install2.r --error \
-    -r "http://cran.rstudio.com" \
-    -r "http://datacube.wu.ac.at" \
-    -r "http://packages.ropensci.org" \
-    -r "http://www.bioconductor.org/packages/release/bioc" \
-    -r "http://nceas.github.io/drat" \
-    datapackage \
+RUN install2.r --error \ 
+    -r 'http://cran.rstudio.com' \
+    -r 'http://datacube.wu.ac.at' \
+    -r 'http://packages.ropensci.org' \
+    -r 'http://www.bioconductor.org/packages/release/bioc' \
+    -r 'http://nceas.github.io/drat' \
     dismo \
     drat \
     geiger \
@@ -47,13 +73,11 @@ RUN rm -rf /tmp/*.rds \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
   && pip install retriever \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
-
-## Do the Omegahat installs seperately...
-RUN install2.r \
-    -r "http://cran.rstudio.com" \
-    -r "http://www.omegahat.org/R" \
-    -r "http://packages.ropensci.org" \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
+  && install2.r --error \
+    -r 'http://cran.rstudio.com' \
+    -r 'http://packages.ropensci.org' \
+    -r 'http://www.omegahat.net/R' \
     Rcompression \
     RHTMLForms \
     ROOXML \
