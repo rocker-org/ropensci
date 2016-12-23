@@ -6,34 +6,30 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     cdbs \
-    libgl1-mesa-dev \
-    libhiredis-dev \
-    libicu-dev \
-    libproj-dev \
-    libsasl2-dev \
-    python-pip \
     default-jdk \
     default-jre \
     gdal-bin \
     icedtea-netx \
-    libatlas-base-dev \
-    libcairo2-dev \
+    libbz2-dev \
     libhunspell-dev \
     libgeos-dev \
+    libgl1-mesa-dev \
     libgsl0-dev \
+    libhiredis-dev \
+    libicu-dev \
+    liblzma-dev \
+    libproj-dev \
     librdf0-dev \
-    libmysqlclient-dev \
-    libpq-dev \
-    libsqlite3-dev \
     librsvg2-dev \
+    libsasl2-dev \
     libv8-dev \
     libxcb1-dev \
     libxdmcp-dev \
-    libxml2-dev \
     libxslt1-dev \
     libxt-dev \
     mdbtools \
     netcdf-bin \
+    python-pip \
     qpdf \
     ssh \
     vim \
