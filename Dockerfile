@@ -80,4 +80,4 @@ RUN install2.r --error \
 
 ## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
 RUN R -e 'out <- ropkgs::ro_pkgs(); readr::write_lines(out$packages$name[out$packages$on_cran], "ropensci.txt")' \
-  && install2.r --error `cat ropensci.txt`  
+  && install2.r `cat ropensci.txt`  
