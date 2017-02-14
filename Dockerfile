@@ -1,5 +1,5 @@
 ## Start with the rstudio image providing 'base R' as well as RStudio based on Debian testing
-FROM rocker/verse
+FROM rocker/geospatial
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Refresh package list and upgrade
@@ -8,11 +8,8 @@ RUN apt-get update \
     cdbs \
     default-jdk \
     default-jre \
-    gdal-bin \
     icedtea-netx \
     libbz2-dev \
-    libhunspell-dev \
-    libgeos-dev \
     libgl1-mesa-dev \
     libgsl0-dev \
     libhiredis-dev \
@@ -28,7 +25,6 @@ RUN apt-get update \
     libxslt1-dev \
     libxt-dev \
     mdbtools \
-    netcdf-bin \
     python-pip \
     qpdf \
     ssh \
@@ -69,7 +65,6 @@ RUN install2.r --error \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
   && pip install retriever \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
   && install2.r --error \
     -r 'http://cran.rstudio.com' \
     -r 'http://packages.ropensci.org' \
@@ -80,8 +75,9 @@ RUN install2.r --error \
     RWordXML \
     SSOAP \
     Sxslt \
-    XMLSchema 
+    XMLSchema \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
 ## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
-RUN R -e 'out <- ropkgs::ro_pkgs(); install.packages(out$packages$name[out$packages$on_cran])' \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+RUN R -e 'out <- ropkgs::ro_pkgs(); readr::write_lines(out$packages$name[out$packages$on_cran], "ropensci.txt")' \
+  && install2.r --error `cat ropensci.txt`  
