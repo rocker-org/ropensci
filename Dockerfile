@@ -28,7 +28,7 @@ RUN apt-get update \
     libxt-dev \
     mdbtools \
     python-pip \
-    pdftools \
+    python-pdftools \
     qpdf \
     ssh \
     vim \
