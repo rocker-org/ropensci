@@ -15,6 +15,8 @@ RUN apt-get update \
     libhiredis-dev \
     libicu-dev \
     liblzma-dev \
+    libmagick++-dev \
+    libpoppler-cpp-dev \
     libproj-dev \
     librdf0-dev \
     librsvg2-dev \
@@ -26,6 +28,7 @@ RUN apt-get update \
     libxt-dev \
     mdbtools \
     python-pip \
+    pdftools \
     qpdf \
     ssh \
     vim \
