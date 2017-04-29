@@ -38,7 +38,7 @@ RUN apt-get update \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Install additional dependencies
-RUN install2.r --error \ 
+RUN install2.r \
     -r 'http://cran.rstudio.com' \
     -r 'http://datacube.wu.ac.at' \
     -r 'http://packages.ropensci.org' \
@@ -68,7 +68,7 @@ RUN install2.r --error \
     cloudyr/aws.signature \
     cloudyr/aws.s3 \
   && pip install retriever \
-  && install2.r --error \
+  && install2.r \
     -r 'http://cran.rstudio.com' \
     -r 'http://packages.ropensci.org' \
     -r 'http://www.omegahat.net/R' \
