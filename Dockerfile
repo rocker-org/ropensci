@@ -40,8 +40,8 @@ RUN install2.r --error \
     phylobase \
     phytools \
     Rcampdf \
-    rrdf \
     redland \
+    rJava \
     rhdf5 \
     ropkgs \
     ridigbio \
@@ -63,6 +63,8 @@ RUN install2.r --error \
     SSOAP \
     Sxslt \
     XMLSchema \
+    rrdflibs \
+    rrdf \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
 ## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
