@@ -7,17 +7,12 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     cdbs \
     icedtea-netx \
-    libgl1-mesa-dev \
     libgsl0-dev \
     libhiredis-dev \
     libpoppler-cpp-dev \
     librdf0-dev \
-    librsvg2-dev \
     libsasl2-dev \
-    libxcb1-dev \
-    libxdmcp-dev \
     libxslt1-dev \
-    libxt-dev \
     mdbtools \
     python-pip \
     python-pdftools \
