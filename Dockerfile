@@ -55,7 +55,7 @@ RUN install2.r --error \
     sangerseqR \
     dataone \
     datapack \
-  && R -e "remotes::install_github(c('richfitz/drat.builder')" \
+  && R -e "remotes::install_github('richfitz/drat.builder')" \
   && pip install retriever \
   && install2.r --error \
     -r 'http://cran.rstudio.com' \
