@@ -6,22 +6,14 @@ MAINTAINER Carl Boettiger cboettig@ropensci.org
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     cdbs \
-    default-jdk \
-    default-jre \
     icedtea-netx \
-    libbz2-dev \
     libgl1-mesa-dev \
     libgsl0-dev \
     libhiredis-dev \
-    libicu-dev \
-    liblzma-dev \
-    libmagick++-dev \
     libpoppler-cpp-dev \
-    libproj-dev \
     librdf0-dev \
     librsvg2-dev \
     libsasl2-dev \
-    libv8-dev \
     libxcb1-dev \
     libxdmcp-dev \
     libxslt1-dev \
@@ -29,9 +21,6 @@ RUN apt-get update \
     mdbtools \
     python-pip \
     python-pdftools \
-    qpdf \
-    ssh \
-    vim \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
