@@ -38,12 +38,13 @@ RUN apt-get update \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Install additional dependencies
-RUN install2.r \
+RUN install2.r --error \
     -r 'http://cran.rstudio.com' \
     -r 'http://datacube.wu.ac.at' \
     -r 'http://packages.ropensci.org' \
     -r 'http://www.bioconductor.org/packages/release/bioc' \
     -r 'http://nceas.github.io/drat' \
+    aws.s3 \
     dismo \
     drat \
     geiger \
@@ -63,12 +64,9 @@ RUN install2.r \
     sangerseqR \
     dataone \
     datapack \
-  && installGithub.r \
-    richfitz/drat.builder \
-    cloudyr/aws.signature \
-    cloudyr/aws.s3 \
+  && R -e "remotes::install_github(c('richfitz/drat.builder')" \
   && pip install retriever \
-  && install2.r \
+  && install2.r --error \
     -r 'http://cran.rstudio.com' \
     -r 'http://packages.ropensci.org' \
     -r 'http://www.omegahat.net/R' \
