@@ -35,7 +35,9 @@ RUN apt-get update \
   && R CMD javareconf \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/ \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
+  && wget -O /usr/local/bin/install2.r https://github.com/eddelbuettel/littler/raw/master/inst/examples/install2.r \
+  && chmod +x /usr/local/bin/install2.r
 
 ## Install additional dependencies
 RUN install2.r --error \
