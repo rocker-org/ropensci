@@ -1,19 +1,8 @@
 sudo: required
-
 services:
   - docker
 
-## Make sure all containers build without error.
-## r-devel times out on build, so just pull instead
-
-before_install: 
-  - docker build -t rocker/ropensci .
-
-## Crude test, see if our container stays up after launch
 script:
   - docker run -ti rocker/ropensci R --version
-  - docker run -d --name rstudio rocker/ropensci
-  - sleep 5 && docker ps | grep ropensci
-  - docker rm -f $(docker ps -a -q)
 
  
