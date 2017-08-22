@@ -7,18 +7,18 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     cdbs \
     icedtea-netx \
-    libgl1-mesa-dev \
+    libapparmor-dev \
     libgsl0-dev \
     libhiredis-dev \
+    libmpfr-dev \
     libpoppler-cpp-dev \
+    libprotobuf-dev \
     librdf0-dev \
-    librsvg2-dev \
     libsasl2-dev \
-    libxcb1-dev \
-    libxdmcp-dev \
+    libwebp-dev \
     libxslt1-dev \
-    libxt-dev \
     mdbtools \
+    protobuf-compiler \
     python-pip \
     python-pdftools \
   && R CMD javareconf \
@@ -26,7 +26,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/ \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
   && wget -O /usr/local/bin/install2.r https://github.com/eddelbuettel/littler/raw/master/inst/examples/install2.r \
-  && chmod +x /usr/local/bin/install2.r
+  && chmod +x /usr/local/bin/install2.r \
+  && R CMD javareconf -e
 
 ## Install additional dependencies
 RUN install2.r --error \
@@ -45,8 +46,8 @@ RUN install2.r --error \
     phylobase \
     phytools \
     Rcampdf \
-    rrdf \
     redland \
+    rJava \
     rhdf5 \
     ropkgs \
     ridigbio \
@@ -55,7 +56,53 @@ RUN install2.r --error \
     sangerseqR \
     dataone \
     datapack \
-  && R -e "remotes::install_github(c('richfitz/drat.builder')" \
+    listviewer \
+    getPass \
+    dbplyr \
+    GGally \
+    Rserve \
+    RSclient \
+    Cairo \
+    dendextend \
+    IRdisplay \
+    outliers \
+    cranlogs \
+    akima \
+    mapdata \
+    plot3D \
+    memisc \
+    rapport \
+    RcppRedis \
+    mongolite \
+    countrycode \
+    redux \
+    rcdk \
+    MCMCglmm \
+    storr \
+    purrrlyr \
+    corrplot \
+    protolite \
+    tidytext \
+    janeaustenr \
+    wordcloud2 \
+    webp \
+    openair \
+    snow \
+    tmap \
+    forecast \
+    weathermetrics \
+    rnaturalearthhires \
+    rsvg \
+    clipr \
+    tiff \
+    sys \
+    Rmpfr \
+    plotKML \
+    readtext \
+    cld3 \
+    seqinr \
+    jose \
+  && R -e "remotes::install_github('richfitz/drat.builder')" \
   && pip install retriever \
   && install2.r --error \
     -r 'http://cran.rstudio.com' \
@@ -68,8 +115,10 @@ RUN install2.r --error \
     SSOAP \
 #    Sxslt \
     XMLSchema \
-  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
+    rrdflibs \
+    rrdf \
+  && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## Install the rOpenSci R packages that are currently on CRAN. must use single quote notation
 RUN R -e 'out <- ropkgs::ro_pkgs(); readr::write_lines(out$packages$name[out$packages$on_cran], "ropensci.txt")' \
-  && install2.r `cat ropensci.txt`  
+  && install2.r `cat ropensci.txt`
