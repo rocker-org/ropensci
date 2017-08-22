@@ -66,7 +66,7 @@ RUN install2.r --error \
     ROOXML \
     RWordXML \
     SSOAP \
-    Sxslt \
+#    Sxslt \
     XMLSchema \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds 
 
