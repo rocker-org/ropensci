@@ -1,5 +1,5 @@
 ## Start with the rstudio image providing 'base R' as well as RStudio based on Debian testing
-FROM rocker/geospatial:3.3.3
+FROM rocker/geospatial:devel
 MAINTAINER Carl Boettiger cboettig@ropensci.org
 
 ## Refresh package list and upgrade
@@ -15,6 +15,7 @@ RUN apt-get update \
     libprotobuf-dev \
     librdf0-dev \
     libsasl2-dev \
+    libtesseract-dev \
     libwebp-dev \
     libxslt1-dev \
     mdbtools \

@@ -15,6 +15,7 @@ RUN apt-get update \
     libprotobuf-dev \
     librdf0-dev \
     libsasl2-dev \
+    libtesseract-dev \
     libwebp-dev \
     libxslt1-dev \
     mdbtools \
