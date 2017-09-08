@@ -10,6 +10,7 @@ RUN apt-get update \
     libapparmor-dev \
     libgsl0-dev \
     libhiredis-dev \
+    libleptonica-dev \
     libmpfr-dev \
     libpoppler-cpp-dev \
     libprotobuf-dev \
