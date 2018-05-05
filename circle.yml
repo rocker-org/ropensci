@@ -8,15 +8,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: docker build -t rocker/ropensci .
-  deploy:
-    name: Push application Docker image
-    command: |
-      docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-      docker push
+      - deploy:
+          name: Push application Docker image
+          command: |
+            docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+            docker push
 workflows:
   version: 2
   nightly:
     jobs:
       - build
-      - deploy
 
