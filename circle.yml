@@ -12,7 +12,7 @@ jobs:
           name: Push application Docker image
           command: |
             docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-            docker push
+            docker push rocker/ropensci
 workflows:
   version: 2
   nightly:
