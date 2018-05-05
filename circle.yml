@@ -15,7 +15,17 @@ jobs:
             docker push rocker/ropensci
 workflows:
   version: 2
-  nightly:
+  commit-workflow:
+    jobs:
+      - build 
+  scheduled-workflow:
+    triggers:
+      - schedule:
+          cron: "0 1 * * *"
+          filters:
+            branches:
+              only: try-schedule-workflow
     jobs:
       - build
+
 
